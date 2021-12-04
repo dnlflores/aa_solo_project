@@ -22,4 +22,9 @@ router.post('/', asyncHandler(async (req, res, next) => {
     return next(err);
 }));
 
+router.delete('/', (req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'sucess' });
+});
+
 module.exports = router;
