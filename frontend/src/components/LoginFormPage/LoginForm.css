@@ -1,0 +1,31 @@
+.login-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+label, input {
+    margin: 5px;
+}
+
+.username-label, .username-input {
+    position: relative;
+    right: 22px;
+}
+
+html {
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+    color: white;
+}
+
+.error-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    top: 35vh;
+    right: 10vh
+}
