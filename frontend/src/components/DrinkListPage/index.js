@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
 // import { Redirect } from 'react-router-dom';
 import { getDrinks } from '../../store/drink';
 import './DrinkList.css';
