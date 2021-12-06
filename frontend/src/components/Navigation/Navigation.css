@@ -1,0 +1,36 @@
+body {
+    height: 100vh;
+}
+
+.navigation-li {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation-li>a {
+    text-decoration: none;
+    color: white;
+}
+
+a.active {
+    color: #9999ff;
+}
+
+button.profile-button {
+    background-color: #9999ff;
+    display: flex;
+    color: white;
+    border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    position: relative;
+    left: 50px;
+}
+
+ul.profile-dropdown {
+    list-style-type: none;
+    position: relative;
+    right: 20px;
+}

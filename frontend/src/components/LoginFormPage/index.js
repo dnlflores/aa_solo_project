@@ -27,20 +27,20 @@ const LoginFormPage = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="error-list">
+            <div className="login-error-list">
                 <ul>
                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                 </ul>
             </div>
             <div className="login-div">
-                <label className="username-label">
+                <label className="login-username-label">
                     Username/Email: 
                     <input
                         type='text'
                         value={credential}
                         onChange={event => setCredential(event.target.value)}
                         required
-                        id="username-input"
+                        id="login-username-input"
                     />
                 </label>
                 <label className="password-label">
@@ -50,7 +50,7 @@ const LoginFormPage = () => {
                         value={password}
                         onChange={event => setPassword(event.target.value)}
                         required
-                        id="password-input"
+                        id="login-password-input"
                     />
                 </label>
                 <button type="submit" id="login-button">Log In</button>
