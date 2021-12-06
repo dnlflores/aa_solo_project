@@ -22,7 +22,7 @@ module.exports = {
       },
       strength: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(10, 1)
       },
       userId: {
         allowNull: false,

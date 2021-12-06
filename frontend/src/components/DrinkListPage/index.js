@@ -21,7 +21,7 @@ const DrinkListPage = () => {
                     <img src={drink.imgUrl} alt="beer" className="beer-img" id={`beer-${drink.id}`}></img>
                     <div className="beer-info-div">
                         <h2 className="drink-title" id={`beer-${drink.id}-title`}>{drink.name}</h2>
-                        <p className="drink-strength" id={`beer-${drink.id}-strength`}>Strength: {drink.strength}</p>
+                        <p className="drink-strength" id={`beer-${drink.id}-strength`}>Strength: {drink.strength}% ABV</p>
                         <p className="drink-description" id={`beer-${drink.id}-description`}>{drink.description}</p>
                     </div>
                 </li>
