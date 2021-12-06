@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation'
+import DrinkListPage from './components/DrinkListPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+        </Route>
+        <Route path="/drinks">
+          <DrinkListPage />
         </Route>
       </Switch>
       )}

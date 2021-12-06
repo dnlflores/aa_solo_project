@@ -5,11 +5,18 @@ body {
 .navigation-li {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+    background: rgb(11, 150, 243);
+    height: 50px;
+    position: sticky;
+    top: 0;
 }
 
 .navigation-li>a {
     text-decoration: none;
     color: white;
+    z-index: 51;
 }
 
 a.active {
@@ -33,4 +40,16 @@ ul.profile-dropdown {
     list-style-type: none;
     position: relative;
     right: 20px;
+}
+
+#root {
+    position: relative;
+}
+
+ul.container {
+    padding-inline-start: 0;
+}
+
+form {
+    position: relative;
 }
