@@ -25,7 +25,7 @@ export const getDrinks = () => async dispatch => {
 
     if (response.ok) {
         const drinks = await response.json();
-        console.log('DRINKS FROM RESPONSE', drinks);
+        
         dispatch(load(drinks));
         return drinks;
     }
@@ -40,7 +40,7 @@ const drinksReducer = (state = initialState, action) => {
         case LOAD:
             // console.log('ACTION', action.list);
             const newState = { ...action.list.drinks}
-            console.log('NEW STATE', newState);
+            
             return newState;
         default:
             return state;

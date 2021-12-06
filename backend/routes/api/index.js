@@ -4,9 +4,11 @@ const router = require('express').Router();
 // const { User } = require('../../db/models');
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
+const drinksRouter = require('./drinks');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/drinks', drinksRouter);
 
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
 //     const user = await User.findOne({

@@ -1,0 +1,62 @@
+ul.beer-list-ul {
+    list-style-type: none;
+}
+
+img.beer-img {
+    height: 400px;
+    width: 300px;
+}
+
+img#beer-3 {
+    width: 450px;
+    height: 350px;
+    position: relative;
+    right: 100px;
+}
+
+img#beer-4 {
+    width: 250px;
+}
+
+img#beer-5 {
+    width: 450px;
+    position: relative;
+    right: 100px;
+}
+
+li.beer-li {
+    display: flex;
+    margin: 40px;
+}
+
+h2.drink-title {
+    font-size: 45px;
+}
+
+p.drink-strength {
+    font-size: 20px;
+}
+
+p.drink-description {
+    font-size: 25px;
+    width: 700px;
+}
+
+h2#beer-4-title,
+p#beer-4-description,
+p#beer-4-strength {
+    position: relative;
+    left: 200px;
+}
+
+img#beer-4 {
+    position: relative;
+    top: 20px;
+}
+
+h2#beer-1-title, h2#beer-2-title,
+p#beer-1-strength, p#beer-2-strength, 
+p#beer-1-description, p#beer-2-description {
+    position: relative;
+    left: 150px;
+}
