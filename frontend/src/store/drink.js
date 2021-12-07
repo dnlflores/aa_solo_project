@@ -31,6 +31,21 @@ export const getDrinks = () => async dispatch => {
     }
 };
 
+export const editDrink = drink => async dispatch => {
+    const response = await csrfFetch('/api/drinks', {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(drink)
+    });
+
+    if (response.ok) {
+        const newDrink = await response.json();
+        dispatch()
+    }
+}
+
 const initialState = {
     drinks: [],
 }

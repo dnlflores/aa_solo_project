@@ -10,10 +10,43 @@ const DrinkListPage = () => {
     const drinks = Object.values(useSelector(state => state.drinks));
     const sessionUser = useSelector(state => state.session.user);
     const [buttonPopup, setButtonPopup] = useState(false);
+    const [drinkName, setDrinkName] = useState('');
+    const [strength, setStrength] = useState('');
+    const [description, setDescription] = useState('');
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         dispatch(getDrinks())
     }, [dispatch]);
+
+    const handleEditSubmit = async event => {
+        event.preventDefault();
+
+        const drinkId = event.target[0].id;
+        const drink = drinks[+drinkId - 1]
+
+        let newDrinkName = drink.name;
+        let newStrength = drink.strength;
+        let newDescription = drink.description;
+
+        if (drink) {
+            if(drinkName !== '') newDrinkName = drinkName;
+            if(strength !== '') newStrength = strength;
+            if(description !== '') newDescription = description;
+            
+        }
+
+        const payload = {
+            ...drink,
+            name: newDrinkName,
+            strength: newStrength,
+            description: newDescription
+        }
+
+        // let updatedDrink = await dispatch(edit)
+
+        console.log('PAYLOAD', payload)
+    };
 
     return (
         <ul className="beer-list-ul">
@@ -27,52 +60,45 @@ const DrinkListPage = () => {
                             {sessionUser.id === drink.userId &&
                                 <>
                                     <button className="button button--janus edit-drink-button" onClick={event => setButtonPopup(true)}><span>Edit</span></button>
-                                    <EditPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                                    <EditPopup trigger={buttonPopup} setTrigger={setButtonPopup} drink={drink}>
                                         <h3>Edit {drink.name}</h3>
-                                        <form>
-                                            {/* <div className="signup-div">
-                                                <div className="signup-username-div">
-                                                    <label className="signup-username-label">Username: </label>
+                                        <form onSubmit={handleEditSubmit}>
+                                            <div className="signup-error-list">
+                                                <ul>
+                                                    {errors.map((error, index) => <li key={index}>{error}</li>)}
+                                                </ul>
+                                            </div>
+                                            <div className="edit-drink-div">
+                                                <div className="edit-drink-name-div">
+                                                    <label className="drink-name-label">Name: </label>
                                                     <input
                                                         type='text'
-                                                        value={username}
-                                                        onChange={event => setUsername(event.target.value)}
-                                                        required
-                                                        id="signup-username-input"
+                                                        value={drinkName}
+                                                        onChange={event => setDrinkName(event.target.value)}
+                                                        className="drink-name-input"
+                                                        id={`${drink.id}`}
                                                     />
                                                 </div>
-                                                <div className="signup-email-div">
-                                                    <label className="signup-email-label">Email: </label>
+                                                <div className="drink-description-div">
+                                                    <label className="drink-description-label">Description: </label>
                                                     <input
                                                         type='text'
-                                                        value={email}
-                                                        onChange={event => setEmail(event.target.value)}
-                                                        required
-                                                        id="signup-email-input"
+                                                        value={description}
+                                                        onChange={event => setDescription(event.target.value)}
+                                                        id="drink-description-input"
                                                     />
                                                 </div>
-                                                <div className="signup-password-div">
-                                                    <label className="signup-password-label">Password: </label>
+                                                <div className="drink-strength-div">
+                                                    <label className="drink-strength-label">Strength: </label>
                                                     <input
-                                                        type="password"
-                                                        value={password}
-                                                        onChange={event => setPassword(event.target.value)}
-                                                        required
-                                                        id="signup-password-input"
+                                                        type="text"
+                                                        value={strength}
+                                                        onChange={event => setStrength(event.target.value)}
+                                                        id="drink-strength-input"
                                                     />
                                                 </div>
-                                                <div className="signup-confirm-password-div">
-                                                    <label className="signup-confirm-password-label">Confirm Password: </label>
-                                                    <input
-                                                        type="password"
-                                                        value={confirmPassword}
-                                                        onChange={event => setConfirmPassword(event.target.value)}
-                                                        required
-                                                        id="signup-confirm-password-input"
-                                                    />
-                                                </div>
-                                                <button type="submit" id="signup-button">Sign Up</button>
-                                            </div> */}
+                                                <button type="submit" className="edit-drink-button" id={`${drink.id}`}>Submit Changes</button>
+                                            </div>
                                         </form>
                                     </EditPopup>
                                 </>}
