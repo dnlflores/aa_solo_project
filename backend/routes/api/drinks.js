@@ -11,8 +11,24 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.patch('/:id', asyncHandler(async (req, res) => {
-    const { id } = req.body;
-    console.log('ID', id);
+    const { id, name, description, strength } = req.body;
+
+    const updatedDrink = {
+        id, 
+        name,
+        description,
+        strength
+    };
+
+    console.log('ID', id, 'NAME', name, 'DESC', description, 'STRENGTH', strength);
+    const drinkToUpdate = await Drink.findOne({
+        where: {
+            id
+        }
+    });
+
+    await drinkToUpdate.update(updatedDrink);
+    res.json({ drinkToUpdate });
 }));
 
 module.exports = router;

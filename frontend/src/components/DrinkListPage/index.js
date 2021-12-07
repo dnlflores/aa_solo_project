@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
-import { getDrinks } from '../../store/drink';
+import { getDrinks, editDrink } from '../../store/drink';
 import './DrinkList.css';
 import EditPopup from '../EditPopup';
 
@@ -43,7 +43,8 @@ const DrinkListPage = () => {
             description: newDescription
         }
 
-        // let updatedDrink = await dispatch(edit)
+        let updatedDrink = await dispatch(editDrink(payload));
+        if (updatedDrink) console.log("UPDATED DRINK", updatedDrink);
 
         console.log('PAYLOAD', payload)
     };

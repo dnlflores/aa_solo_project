@@ -3,11 +3,17 @@ import { csrfFetch } from "./csrf";
 const LOAD = 'drinks/LOAD';
 const LOAD_DRINK = 'drinks/LOAD_DRINK';
 const ADD_DRINK = 'drinks/ADD_DRINK';
+const SET_DRINK = 'drinks/SET_DRINK';
 
 const load = list => ({
     type: LOAD,
     list
 });
+
+const setDrink = drink => ({
+    type: SET_DRINK,
+    drink
+})
 
 const loadDrink = drink => ({
     type: LOAD_DRINK,
@@ -32,7 +38,7 @@ export const getDrinks = () => async dispatch => {
 };
 
 export const editDrink = drink => async dispatch => {
-    const response = await csrfFetch('/api/drinks', {
+    const response = await csrfFetch(`/api/drinks/${drink.id}`, {
         method: 'PATCH',
         headers: {
             "Content-Type": "application/json"
@@ -42,7 +48,9 @@ export const editDrink = drink => async dispatch => {
 
     if (response.ok) {
         const newDrink = await response.json();
-        dispatch()
+        console.log('NEW DRINK', newDrink);
+        dispatch(setDrink(newDrink));
+        return newDrink;
     }
 }
 
