@@ -16,7 +16,7 @@ const DrinkListPage = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(getDrinks())
+        dispatch(getDrinks());
     }, [dispatch]);
 
     const handleEditSubmit = async event => {
