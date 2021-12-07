@@ -7,7 +7,7 @@ import './DrinkList.css';
 const DrinkListPage = () => {
     const dispatch = useDispatch();
     const drinks = Object.values(useSelector(state => state.drinks));
-    console.log("DRINKS", drinks);
+    const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(getDrinks())
@@ -18,9 +18,13 @@ const DrinkListPage = () => {
             {drinks.map(drink => (
                 <li className="beer-li">
                     <img src={drink.imgUrl} alt="beer" className="beer-img" id={`beer-${drink.id}`}></img>
-                    <div className="beer-info-div">
+                    <div className="beer-info-div" id={`beer-${drink.id}-div`}>
                         <h2 className="drink-title" id={`beer-${drink.id}-title`}>{drink.name}</h2>
-                        <p className="drink-strength" id={`beer-${drink.id}-strength`}>Strength: {drink.strength}% ABV</p>
+                        <div className="strength-edit-container">
+                            <p className="drink-strength" id={`beer-${drink.id}-strength`}>Strength: {drink.strength}% ABV</p>
+                            {sessionUser.id === drink.userId && 
+                            <button className="button button--janus edit-drink-button"><span>Edit</span></button>}
+                        </div>
                         <p className="drink-description" id={`beer-${drink.id}-description`}>{drink.description}</p>
                     </div>
                 </li>
