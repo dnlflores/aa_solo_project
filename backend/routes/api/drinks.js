@@ -20,7 +20,6 @@ router.patch('/:id', asyncHandler(async (req, res) => {
         strength
     };
 
-    console.log('ID', id, 'NAME', name, 'DESC', description, 'STRENGTH', strength);
     const drinkToUpdate = await Drink.findOne({
         where: {
             id
