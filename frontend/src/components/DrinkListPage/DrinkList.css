@@ -75,3 +75,7 @@ div.beer-info-div {
     gap: 20px;
 }
 
+.edit-drink-button {
+    position: relative;
+    top: 20px;
+}
