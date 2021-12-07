@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDrinks, editDrink } from '../../store/drink';
 import './DrinkList.css';
 import EditPopup from '../EditPopup';
+import { useHistory } from 'react-router-dom'
 
 const DrinkListPage = () => {
     const dispatch = useDispatch();
-    const drinks = Object.values(useSelector(state => state.drinks));
+    const history = useHistory();
+    const { drinks } = useSelector(state => state.drinks);
     const sessionUser = useSelector(state => state.session.user);
     const [buttonPopup, setButtonPopup] = useState(false);
     const [drinkName, setDrinkName] = useState('');
     const [strength, setStrength] = useState('');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
+    const drinksArray = Object.values(drinks);
 
     useEffect(() => {
         dispatch(getDrinks());
@@ -23,17 +26,17 @@ const DrinkListPage = () => {
         event.preventDefault();
 
         const drinkId = event.target[0].id;
-        const drink = drinks[+drinkId - 1]
+        const drink = drinksArray.find(drink => drink.id === +drinkId)
 
         let newDrinkName = drink.name;
         let newStrength = drink.strength;
         let newDescription = drink.description;
 
         if (drink) {
-            if(drinkName !== '') newDrinkName = drinkName;
-            if(strength !== '') newStrength = strength;
-            if(description !== '') newDescription = description;
-            
+            if (drinkName !== '') newDrinkName = drinkName;
+            if (strength !== '') newStrength = strength;
+            if (description !== '') newDescription = description;
+
         }
 
         const payload = {
@@ -44,14 +47,18 @@ const DrinkListPage = () => {
         }
 
         let updatedDrink = await dispatch(editDrink(payload));
-        if (updatedDrink) console.log("UPDATED DRINK", updatedDrink);
-
-        console.log('PAYLOAD', payload)
+        if (updatedDrink) {
+            console.log("UPDATED DRINK", updatedDrink);
+            setButtonPopup(false);
+            setDrinkName('');
+            setStrength('');
+            setDescription('');
+        }
     };
 
     return (
         <ul className="beer-list-ul">
-            {drinks.map(drink => (
+            {drinksArray.map(drink => (
                 <li className="beer-li">
                     <img src={drink.imgUrl} alt="beer" className="beer-img" id={`beer-${drink.id}`}></img>
                     <div className="beer-info-div" id={`beer-${drink.id}-div`}>

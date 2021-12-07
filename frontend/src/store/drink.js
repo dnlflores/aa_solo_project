@@ -61,10 +61,19 @@ const initialState = {
 const drinksReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
-            // console.log('ACTION', action.list);
-            const newState = { ...action.list.drinks}
+            const newState = {drinks: {}};
+
+            for(let i = 0; i < action.list.drinks.length; i++) {
+                newState.drinks[action.list.drinks[i].id] = action.list.drinks[i];
+            }
             
             return newState;
+        case SET_DRINK:
+            const updateState = {...state};
+            console.log('ORIGINAL STATE', state ,'UPDATED STATE', updateState, 'DRINK FROM ACTION', action.drink.drinkToUpdate);
+            updateState.drinks[action.drink.drinkToUpdate.id] = action.drink.drinkToUpdate;
+            // console.log('AFTER STATE', updateState);
+            return updateState;
         default:
             return state;
     }
