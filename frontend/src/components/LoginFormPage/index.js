@@ -53,9 +53,7 @@ const LoginFormPage = () => {
                         id="login-password-input"
                     />
                 </label>
-                <button className="button button--bestia" type="submite" id="login-button">
-						<div className="button__bg"></div><span>Log In</span>
-					</button>
+                <button type="submit" className="login-button btn button-1">Log In</button>
             </div>
         </form>
     )

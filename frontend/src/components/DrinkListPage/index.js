@@ -69,16 +69,15 @@ const DrinkListPage = () => {
                                 <>
                                     <button className="button button--janus edit-drink-button" onClick={event => setButtonPopup(true)}><span>Edit</span></button>
                                     <EditPopup trigger={buttonPopup} setTrigger={setButtonPopup} drink={drink}>
-                                        <h3>Edit {drink.name}</h3>
-                                        <form onSubmit={handleEditSubmit}>
+                                        <h3 className="edit-popup-title">{drink.name}</h3>
+                                        <form className="edit-popup-form" onSubmit={handleEditSubmit}>
                                             <div className="signup-error-list">
                                                 <ul>
                                                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                                                 </ul>
                                             </div>
                                             <div className="edit-drink-div">
-                                                <div className="edit-drink-name-div">
-                                                    <label className="drink-name-label">Name: </label>
+                                                <div className="edit-drink-name-div edit-input-container">
                                                     <input
                                                         type='text'
                                                         value={drinkName}
@@ -86,26 +85,27 @@ const DrinkListPage = () => {
                                                         className="drink-name-input"
                                                         id={`${drink.id}`}
                                                     />
+                                                    <label className="drink-name-label">Name</label>
                                                 </div>
-                                                <div className="drink-description-div">
-                                                    <label className="drink-description-label">Description: </label>
+                                                <div className="drink-description-div edit-input-container">
                                                     <input
                                                         type='text'
                                                         value={description}
                                                         onChange={event => setDescription(event.target.value)}
                                                         id="drink-description-input"
                                                     />
+                                                    <label className="drink-description-label">Description</label>
                                                 </div>
-                                                <div className="drink-strength-div">
-                                                    <label className="drink-strength-label">Strength: </label>
+                                                <div className="drink-strength-div edit-input-container">
                                                     <input
                                                         type="text"
                                                         value={strength}
                                                         onChange={event => setStrength(event.target.value)}
                                                         id="drink-strength-input"
                                                     />
+                                                    <label className="drink-strength-label">Strength</label>
                                                 </div>
-                                                <button type="submit" className="edit-drink-button" id={`${drink.id}`}>Submit Changes</button>
+                                                <button type="submit" className="edit-drink-button button-2" id={`${drink.id}`}>Submit!</button>
                                             </div>
                                         </form>
                                     </EditPopup>

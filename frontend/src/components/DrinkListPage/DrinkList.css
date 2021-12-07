@@ -5,6 +5,8 @@ ul.beer-list-ul {
 img.beer-img {
     height: 400px;
     width: 300px;
+    position: relative;
+    top: 70px;
 }
 
 img#beer-3 {
@@ -30,16 +32,19 @@ li.beer-li {
 }
 
 h2.drink-title {
-    font-size: 45px;
+    font-size: 55px;
+    font-family: 'Anton', sans-serif;
 }
 
 p.drink-strength {
     font-size: 20px;
+    font-family: 'Abril Fatface', cursive;
 }
 
 p.drink-description {
-    font-size: 25px;
+    font-size: 30px;
     width: 700px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 div#beer-4-div {
@@ -63,3 +68,10 @@ div.strength-edit-container {
     width: 600px;
     align-items: center;
 }
+
+div.beer-info-div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+

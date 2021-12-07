@@ -15,12 +15,118 @@
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: white;
-    color: black;
+    background: linear-gradient(to right, #5f2c82, #49a09d);
+    color: white;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.popup-inner .close-button {
+
+.outer {
+    position: relative;
+    margin: auto;
+    width: 40px;
+    /* margin-top: 200px; */
+    cursor: pointer;
+    bottom: 185px;
+    left: 300px;
+}
+
+.inner {
+    width: inherit;
+    text-align: center;
+}
+
+#close-label {
+    font-size: .8em;
+    line-height: 4em;
+    text-transform: uppercase;
+    color: #fff;
+    transition: all .3s ease-in;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.inner:before, .inner:after {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    content: '';
+    height: 1px;
+    width: inherit;
+    background: purple;
+    left: 0;
+    transition: all .3s ease-in;
+}
+
+.inner:before {
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+.inner:after {
+    bottom: 50%;
+    transform: rotate(-45deg);
+}
+
+.outer:hover #close-label {
+    opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+    transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+    top: 0;
+}
+
+.outer:hover .inner:after {
+    bottom: 0;
+}
+
+.edit-popup-title {
+    position: absolute;
+    top: 20px;
+    font-size: 40px;
+}
+
+.edit-popup-form {
+    position: absolute;
+    top: 150px;
+}
+
+.edit-input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.edit-input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.edit-input-container input{ 
+  border:0;
+  border-bottom:1px solid purple;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.edit-input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #e74c3c;	
+}
+
+.edit-input-container input:focus ~ label{
+	top:-12px;
+	font-size:12px;
+	
 }
