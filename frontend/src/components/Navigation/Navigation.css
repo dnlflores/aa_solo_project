@@ -28,10 +28,10 @@ button.profile-button {
     display: flex;
     color: white;
     border: none;
-	padding: 10px;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    padding: 10px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
     position: relative;
     left: 50px;
 }
@@ -40,4 +40,62 @@ ul.profile-dropdown {
     list-style-type: none;
     position: relative;
     right: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    right: -300px;
+    transition: all 0.2s linear;
+    background: linear-gradient(to bottom right, #000428, #004e92);
+    box-shadow: 0 0 8px 1px #000428;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout-button {
+    width: 170px;
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+}
+
+#side {
+    position: relative;
+    bottom: inherit;
+    left: inherit;
+    z-index: 200;
+    right: -60px;
+    top: -70px;
+}
+
+#side::before, #side::after {
+    background-color: #1db7e2;
+}
+
+.email, .username {
+    position: relative;
+    top: 60px;
+}
+
+.open-menu-button {
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+    justify-content: space-between;
+}
+
+.top-bar, .middle-bar, .bottom-bar {
+    border-bottom: 5px solid white;
+    width: 30px;
 }

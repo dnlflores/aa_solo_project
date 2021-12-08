@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import Sidebar from './Sidebar';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
@@ -11,7 +12,8 @@ const Navigation = ({ isLoaded }) => {
         sessionLinks = (
             <>
                 <NavLink to="/drinks">Strongest Drinks</NavLink>
-                <ProfileButton user={sessionUser} />
+                {/* <ProfileButton user={sessionUser} /> */}
+                <Sidebar user={sessionUser} />
             </>
         );
     } else {

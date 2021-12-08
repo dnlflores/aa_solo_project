@@ -13,21 +13,31 @@ const Sidebar = ({ user }) => {
         setShowMenu(true);
     };
 
-    useEffect(() => {
-        if (!showMenu) return;
-
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener('click', closeMenu);
-    }, [showMenu]);
-
     const logout = event => {
         event.preventDefault();
         dispatch(sessionActions.logout());
         history.push('/');
     };
+
+    return (
+        <>
+            <button onClick={openMenu} className="open-menu-button"><div className="top-bar"></div><div className="middle-bar"></div><div className="bottom-bar"></div></button>
+            <div className="sidebar" style={showMenu ? { transform: 'translateX(-100%)' } : {}}>
+            {showMenu && (
+                <div className="sidebar-list">
+                    <p className="username">{user.username}</p>
+                    <p className="email">{user.email}</p>
+                    <button onClick={logout} className="button-1 btn logout-button"><label id="logout-label">Log out</label></button>
+                    <div className="outer" id="side">
+                        <div className="inner" id="side">
+                            <pre id="close-label"><button className="close-button btn" onClick={event => setShowMenu(false)}>  &#62;</button></pre>
+                        </div>
+                    </div>
+                </div>
+            )}
+            </div>
+        </>
+    );
 };
+
+export default Sidebar;
