@@ -19,7 +19,7 @@ body {
 }
 
 a.active {
-    color: rgb(142, 240, 142);
+    color: purple;
     font-weight: bold;
 }
 

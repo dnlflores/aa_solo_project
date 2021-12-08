@@ -79,3 +79,8 @@ div.beer-info-div {
     position: relative;
     top: 20px;
 }
+
+.signup-error-list {
+    position: relative;
+    bottom: 30px;
+}

@@ -59,7 +59,7 @@ const DrinkListPage = () => {
     return (
         <ul className="beer-list-ul">
             {drinksArray.map(drink => (
-                <li className="beer-li">
+                <li className="beer-li" key={`${drink.id}-li`}>
                     <img src={drink.imgUrl} alt="beer" className="beer-img" id={`beer-${drink.id}`}></img>
                     <div className="beer-info-div" id={`beer-${drink.id}-div`}>
                         <h2 className="drink-title" id={`beer-${drink.id}-title`}>{drink.name}</h2>
@@ -72,7 +72,7 @@ const DrinkListPage = () => {
                                         <h3 className="edit-popup-title">{drink.name}</h3>
                                         <form className="edit-popup-form" onSubmit={handleEditSubmit}>
                                             <div className="signup-error-list">
-                                                <ul>
+                                                <ul className="errors-ul">
                                                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                                                 </ul>
                                             </div>
@@ -81,8 +81,19 @@ const DrinkListPage = () => {
                                                     <input
                                                         type='text'
                                                         value={drinkName}
-                                                        onChange={event => setDrinkName(event.target.value)}
+                                                        onChange={event => {
+                                                            setDrinkName(event.target.value);
+                                                            const descInput = document.getElementById("drink-description-input");
+                                                            const strenInput = document.getElementById("drink-strength-input");
+
+                                                            if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
+                                                            if (event.target.value === '') strenInput.setAttribute("required", "true");
+
+                                                            if (descInput.hasAttribute("required")) descInput.removeAttribute("required");
+                                                            if (event.target.value === '') descInput.setAttribute("required", "true");
+                                                        }}
                                                         className="drink-name-input"
+                                                        required
                                                         id={`${drink.id}`}
                                                     />
                                                     <label className="drink-name-label">Name</label>
@@ -91,7 +102,18 @@ const DrinkListPage = () => {
                                                     <input
                                                         type='text'
                                                         value={description}
-                                                        onChange={event => setDescription(event.target.value)}
+                                                        onChange={event => {
+                                                            setDescription(event.target.value);
+                                                            const nameInput = document.getElementById(`${drink.id}`);
+                                                            const strenInput = document.getElementById("drink-strength-input");
+
+                                                            if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
+                                                            if (event.target.value === '') strenInput.setAttribute("required", "true");
+
+                                                            if (nameInput.hasAttribute("required")) nameInput.removeAttribute("required");
+                                                            if (event.target.value === '') nameInput.setAttribute("required", "true");
+                                                        }}
+                                                        required
                                                         id="drink-description-input"
                                                     />
                                                     <label className="drink-description-label">Description</label>
@@ -100,8 +122,34 @@ const DrinkListPage = () => {
                                                     <input
                                                         type="text"
                                                         value={strength}
-                                                        onChange={event => setStrength(event.target.value)}
+                                                        onChange={event => {
+                                                            const result = Number(event.target.value);
+
+                                                            console.log('RESULT', result);
+
+                                                            const descInput = document.getElementById("drink-description-input");
+                                                            const nameInput = document.getElementById(`${drink.id}`);
+                                                            
+                                                            if (result >= 0) {
+                                                                setErrors([])
+                                                                setStrength(event.target.value);
+
+                                                                if (nameInput.hasAttribute("required")) nameInput.removeAttribute("required");
+                                                                if (event.target.value === '') nameInput.setAttribute("required", "true");
+
+                                                                if (descInput.hasAttribute("required")) descInput.removeAttribute("required");
+                                                                if (event.target.value === '') descInput.setAttribute("required", "true");
+                                                            } else if (event.target.value !== ''){
+                                                                setErrors(['Strength must be a positive number.']);
+                                                            } else {
+                                                                setStrength(event.target.value);
+                                                                setErrors([]);
+                                                                descInput.removeAttribute("required");
+                                                                nameInput.removeAttribute("required");
+                                                            }
+                                                        }}
                                                         id="drink-strength-input"
+                                                        required
                                                     />
                                                     <label className="drink-strength-label">Strength</label>
                                                 </div>
