@@ -5,8 +5,17 @@ html {
     background-attachment: fixed;
 }
 
+html, body {
+    max-width: 120%;
+    overflow-x: hidden;
+}
+
 label, input {
     margin: 5px;
+}
+
+body {
+	margin: 0;
 }
 
 a {

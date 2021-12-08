@@ -1,9 +1,11 @@
 div.title-motto-div {
-    font-family: 'Permanent Marker', sans-serif;
+    font-family: 'Anton', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
+    font-size: 150%;
+    bottom: 10%;
 }

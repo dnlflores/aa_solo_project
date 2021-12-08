@@ -1,15 +1,15 @@
-body {
-    height: 100vh;
-}
-
 .navigation-li {
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
     z-index: 50;
     background: rgb(11, 150, 243);
-    height: 50px;
+    height: 100px;
     border-radius: 10px;
+    position: relative;
+    width: 120%;
+    right: 12%;
 }
 
 .navigation-li>a {
@@ -40,16 +40,4 @@ ul.profile-dropdown {
     list-style-type: none;
     position: relative;
     right: 20px;
-}
-
-#root {
-    position: relative;
-}
-
-ul.container {
-    padding-inline-start: 0;
-}
-
-form {
-    position: relative;
 }
