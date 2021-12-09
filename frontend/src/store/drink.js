@@ -83,13 +83,13 @@ const drinksReducer = (state = initialState, action) => {
             return newState;
         case SET_DRINK:
             const updateState = {...state};
-            updateState.drinks[action.drink.drinkToUpdate.id] = action.drink.drinkToUpdate;
+            // console.log('ACTION', action, 'UPDATE STATE', updateState);
+            updateState[action.drink.drinkToUpdate.id] = action.drink.drinkToUpdate;
             // console.log('AFTER STATE', updateState);
             return updateState;
         case ADD_DRINK:
             const addState = {drinks: {}};
             addState.drinks = {...state}
-            console.log('ADD STATE', addState);
             return addState;
         default:
             return state;
