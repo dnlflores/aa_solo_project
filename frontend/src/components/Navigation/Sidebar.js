@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Sidebar = ({ user }) => {
     const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const Sidebar = ({ user }) => {
     const goToCreate = event => {
         event.preventDefault();
         setShowMenu(false);
+        history.push('/drinks/create')
     };
 
     return (
@@ -32,7 +33,7 @@ const Sidebar = ({ user }) => {
                 <div className="sidebar-list">
                     <h2 className="username">{user.username}</h2>
                     <p className="email">{user.email}</p>
-                    <button onClick={goToCreate} className="button-1 btn create-button"><NavLink id="create-label" to="/drinks/create">Create Beer!</NavLink></button>
+                    <button onClick={goToCreate} className="button-1 btn create-button"><label id="create-label" to="/drinks/create">Create Beer!</label></button>
                     <button onClick={logout} className="button-1 btn logout-button"><label id="logout-label">Log out</label></button>
                     <div className="outer" id="side">
                         <div className="inner" id="side">

@@ -34,7 +34,7 @@ router.patch('/:id', asyncHandler(async (req, res) => {
 router.post('/', asyncHandler(async (req, res) => {
     const { name, imgUrl, description, strength, userId } = req.body;
 
-    const newDrink = await Drink.create({
+    const newDrink = await Drink.build({
         name,
         imgUrl,
         description,
@@ -43,6 +43,7 @@ router.post('/', asyncHandler(async (req, res) => {
     });
 
     await newDrink.save();
+    res.json({ newDrink });
 }));
 
 module.exports = router;
