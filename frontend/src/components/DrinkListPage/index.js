@@ -87,7 +87,7 @@ const DrinkListPage = () => {
                                                             setDrinkName(event.target.value);
                                                             const descInput = document.getElementById("drink-description-input");
                                                             const strenInput = document.getElementById("drink-strength-input");
-                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
+                                                            const imgUrlInput = document.getElementById("drink-img-url-input");
 
                                                             if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
                                                             if (event.target.value === '') strenInput.setAttribute("required", "true");
@@ -112,7 +112,7 @@ const DrinkListPage = () => {
                                                             setDescription(event.target.value);
                                                             const nameInput = document.getElementById(`${drink.id}`);
                                                             const strenInput = document.getElementById("drink-strength-input");
-                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
+                                                            const imgUrlInput = document.getElementById("drink-img-url-input");
 
                                                             if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
                                                             if (event.target.value === '') strenInput.setAttribute("required", "true");
@@ -139,7 +139,7 @@ const DrinkListPage = () => {
 
                                                             const descInput = document.getElementById("drink-description-input");
                                                             const nameInput = document.getElementById(`${drink.id}`);
-                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
+                                                            const imgUrlInput = document.getElementById("drink-img-url-input");
                                                             
                                                             if (result >= 0) {
                                                                 setErrors([])
