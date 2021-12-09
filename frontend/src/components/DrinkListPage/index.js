@@ -4,18 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDrinks, editDrink } from '../../store/drink';
 import './DrinkList.css';
 import EditPopup from '../EditPopup';
-import { useHistory } from 'react-router-dom'
 
 const DrinkListPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const { drinks } = useSelector(state => state.drinks);
+    // const history = useHistory();
+    const drinks = useSelector(state => state.drinks);
     const sessionUser = useSelector(state => state.session.user);
     const [buttonPopup, setButtonPopup] = useState(false);
     const [drinkName, setDrinkName] = useState('');
     const [strength, setStrength] = useState('');
     const [description, setDescription] = useState('');
+    const [imgUrl, setImgUrl] = useState('');
     const [errors, setErrors] = useState([]);
+    console.log('DRINKS FROM STATE', drinks);
     const drinksArray = Object.values(drinks);
 
     useEffect(() => {
@@ -53,6 +54,7 @@ const DrinkListPage = () => {
             setDrinkName('');
             setStrength('');
             setDescription('');
+            setImgUrl('')
         }
     };
 
@@ -85,12 +87,16 @@ const DrinkListPage = () => {
                                                             setDrinkName(event.target.value);
                                                             const descInput = document.getElementById("drink-description-input");
                                                             const strenInput = document.getElementById("drink-strength-input");
+                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
 
                                                             if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
                                                             if (event.target.value === '') strenInput.setAttribute("required", "true");
 
                                                             if (descInput.hasAttribute("required")) descInput.removeAttribute("required");
                                                             if (event.target.value === '') descInput.setAttribute("required", "true");
+
+                                                            if (imgUrlInput.hasAttribute("required")) imgUrlInput.removeAttribute("required");
+                                                            if (event.target.value === '') imgUrlInput.setAttribute("required", "true");
                                                         }}
                                                         className="drink-name-input"
                                                         required
@@ -106,12 +112,16 @@ const DrinkListPage = () => {
                                                             setDescription(event.target.value);
                                                             const nameInput = document.getElementById(`${drink.id}`);
                                                             const strenInput = document.getElementById("drink-strength-input");
+                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
 
                                                             if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
                                                             if (event.target.value === '') strenInput.setAttribute("required", "true");
 
                                                             if (nameInput.hasAttribute("required")) nameInput.removeAttribute("required");
                                                             if (event.target.value === '') nameInput.setAttribute("required", "true");
+
+                                                            if (imgUrlInput.hasAttribute("required")) imgUrlInput.removeAttribute("required");
+                                                            if (event.target.value === '') imgUrlInput.setAttribute("required", "true");
                                                         }}
                                                         required
                                                         id="drink-description-input"
@@ -129,6 +139,7 @@ const DrinkListPage = () => {
 
                                                             const descInput = document.getElementById("drink-description-input");
                                                             const nameInput = document.getElementById(`${drink.id}`);
+                                                            const imgUrlInput = document.getElementById("drink-image-url-input");
                                                             
                                                             if (result >= 0) {
                                                                 setErrors([])
@@ -139,6 +150,9 @@ const DrinkListPage = () => {
 
                                                                 if (descInput.hasAttribute("required")) descInput.removeAttribute("required");
                                                                 if (event.target.value === '') descInput.setAttribute("required", "true");
+
+                                                                if (imgUrlInput.hasAttribute("required")) imgUrlInput.removeAttribute("required");
+                                                                if (event.target.value === '') imgUrlInput.setAttribute("required", "true");
                                                             } else if (event.target.value !== ''){
                                                                 setErrors(['Strength must be a positive number.']);
                                                             } else {
@@ -152,6 +166,30 @@ const DrinkListPage = () => {
                                                         required
                                                     />
                                                     <label className="drink-strength-label">Strength</label>
+                                                </div>
+                                                <div className="drink-img-url-div edit-input-container">
+                                                    <input
+                                                        type="text"
+                                                        value={imgUrl}
+                                                        onChange={event => {
+                                                            setImgUrl(event.target.value);
+                                                            const descInput = document.getElementById("drink-description-input");
+                                                            const strenInput = document.getElementById("drink-strength-input");
+                                                            const nameInput = document.getElementById(`${drink.id}`);
+
+                                                            if (strenInput.hasAttribute("required")) strenInput.removeAttribute("required");
+                                                            if (event.target.value === '') strenInput.setAttribute("required", "true");
+
+                                                            if (descInput.hasAttribute("required")) descInput.removeAttribute("required");
+                                                            if (event.target.value === '') descInput.setAttribute("required", "true");
+
+                                                            if (nameInput.hasAttribute("required")) nameInput.removeAttribute("required");
+                                                            if (event.target.value === '') nameInput.setAttribute("required", "true");
+                                                        }}
+                                                        id="drink-img-url-input"
+                                                        required
+                                                    />
+                                                    <label className="drink-img-url-label">Image URL</label>
                                                 </div>
                                                 <button type="submit" className="edit-drink-button button-2" id={`${drink.id}`}>Submit!</button>
                                             </div>

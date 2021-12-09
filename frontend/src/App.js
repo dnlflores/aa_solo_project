@@ -7,6 +7,7 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import DrinkListPage from './components/DrinkListPage';
 import HomePage from './components/HomePage';
+import CreateDrinkPage from './components/CreateDrinkPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function App() {
   return (
     <>
     <Navigation isLoaded={isLoaded} />
-    
+
       {isLoaded && (
         <Switch>
         <Route path="/login">
@@ -28,8 +29,11 @@ function App() {
         <Route path="/signup">
           <SignupFormPage />
         </Route>
-        <Route path="/drinks">
+        <Route exact path="/drinks">
           <DrinkListPage />
+        </Route>
+        <Route path="/drinks/create">
+          <CreateDrinkPage />
         </Route>
         <Route exact path="/">
           <HomePage />

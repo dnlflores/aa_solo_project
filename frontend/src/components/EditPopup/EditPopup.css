@@ -93,13 +93,13 @@
 
 .edit-popup-title {
     position: absolute;
-    top: 20px;
+    top: 0px;
     font-size: 40px;
 }
 
 .edit-popup-form {
     position: absolute;
-    top: 150px;
+    top: 110px;
 }
 
 .edit-input-container{

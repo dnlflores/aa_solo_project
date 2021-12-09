@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router-dom'
@@ -21,8 +21,8 @@ const Sidebar = ({ user }) => {
 
     const goToCreate = event => {
         event.preventDefault();
-        history.push('/drinks/create')
         setShowMenu(false);
+        history.push('/drinks/create')
     };
 
     return (
@@ -31,9 +31,9 @@ const Sidebar = ({ user }) => {
             <div className="sidebar" style={showMenu ? { transform: 'translateX(-100%)' } : {}}>
             {showMenu && (
                 <div className="sidebar-list">
-                    <p className="username">{user.username}</p>
+                    <h2 className="username">{user.username}</h2>
                     <p className="email">{user.email}</p>
-                    <button onClick={goToCreate} className="button-1 btn create-button"><label id="create-label">Create Drink!</label></button>
+                    <button onClick={goToCreate} className="button-1 btn create-button"><label id="create-label" to="/drinks/create">Create Beer!</label></button>
                     <button onClick={logout} className="button-1 btn logout-button"><label id="logout-label">Log out</label></button>
                     <div className="outer" id="side">
                         <div className="inner" id="side">
