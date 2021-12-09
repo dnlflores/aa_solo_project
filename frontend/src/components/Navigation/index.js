@@ -11,7 +11,7 @@ const Navigation = ({ isLoaded }) => {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <NavLink to="/drinks">Strongest Drinks</NavLink>
+                <NavLink to="/drinks" className="strong-tab">Strongest Drinks</NavLink>
                 {/* <ProfileButton user={sessionUser} /> */}
                 <Sidebar user={sessionUser} />
             </>
@@ -19,15 +19,15 @@ const Navigation = ({ isLoaded }) => {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink to="/login" className="login-tab">Log In</NavLink>
+                <NavLink to="/signup" className="signup-tab">Sign Up</NavLink>
             </>
         );
     }
     return (
         <div className="container">
             <div className="navigation-li">
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink exact to="/" className="home-tab">Home</NavLink>
                 {isLoaded && sessionLinks}
             </div>
         </div>

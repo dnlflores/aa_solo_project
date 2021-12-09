@@ -66,17 +66,16 @@ ul.profile-dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    top: 100px;
+    position: absolute;
+    bottom: 100px;
 }
 
 #side {
-    position: relative;
+    position: absolute;
     bottom: inherit;
     left: inherit;
     z-index: 200;
-    right: -60px;
-    top: -70px;
+    right: 5px;
 }
 
 #side::before, #side::after {
@@ -93,9 +92,29 @@ ul.profile-dropdown {
     flex-direction: column;
     height: 30px;
     justify-content: space-between;
+    position: relative;
+    left: 50px;
 }
 
 .top-bar, .middle-bar, .bottom-bar {
     border-bottom: 5px solid white;
     width: 30px;
+}
+
+.strong-tab {
+    position: relative;
+    left: 40px;
+}
+
+.login-tab, .logout-tab, .strong-tab, .home-tab {
+    font-size: 20px;
+}
+
+.close-menu {
+    color: #1db7e2;
+}
+
+.create-button {
+    position: relative;
+    top: 100px;
 }

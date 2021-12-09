@@ -19,6 +19,12 @@ const Sidebar = ({ user }) => {
         history.push('/');
     };
 
+    const goToCreate = event => {
+        event.preventDefault();
+        history.push('/drinks/create')
+        setShowMenu(false);
+    };
+
     return (
         <>
             <button onClick={openMenu} className="open-menu-button"><div className="top-bar"></div><div className="middle-bar"></div><div className="bottom-bar"></div></button>
@@ -27,10 +33,11 @@ const Sidebar = ({ user }) => {
                 <div className="sidebar-list">
                     <p className="username">{user.username}</p>
                     <p className="email">{user.email}</p>
+                    <button onClick={goToCreate} className="button-1 btn create-button"><label id="create-label">Create Drink!</label></button>
                     <button onClick={logout} className="button-1 btn logout-button"><label id="logout-label">Log out</label></button>
                     <div className="outer" id="side">
                         <div className="inner" id="side">
-                            <pre id="close-label"><button className="close-button btn" onClick={event => setShowMenu(false)}>  &#62;</button></pre>
+                            <pre id="close-label" className="close-menu"><button className="close-button btn close-menu" onClick={event => setShowMenu(false)}>  &#62;</button></pre>
                         </div>
                     </div>
                 </div>
