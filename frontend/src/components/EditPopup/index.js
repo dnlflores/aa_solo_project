@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 import { editDrink } from '../../store/drink';
 import './EditPopup.css'
@@ -7,19 +7,12 @@ import './EditPopup.css'
 const EditPopup = props => {
     const dispatch = useDispatch();
     // const history = useHistory();
-    const drinks = useSelector(state => state.drinks);
     const [drinkName, setDrinkName] = useState('');
     const [strength, setStrength] = useState('');
     const [description, setDescription] = useState('');
     const [imgUrl, setImgUrl] = useState('');
     const [errors, setErrors] = useState([]);
     const [drink, setDrink] = useState(props.drink);
-    // const drinksArray = Object.values(drinks);
-    console.log('Drink before', drink);
-
-    useEffect(() => {
-        setDrink(drinks[props.drinkId]);
-    }, [])
 
     const handleEditSubmit = async event => {
         event.preventDefault();
@@ -29,6 +22,8 @@ const EditPopup = props => {
         let newDescription = drink.description;
         let newImgUrl = drink.imgUrl;
 
+        console.log('NEW INIT', newDrinkName, newStrength, newDescription, newImgUrl);
+
         if (drink) {
             if (drinkName !== '') newDrinkName = drinkName;
             if (strength !== '') newStrength = strength;
@@ -37,6 +32,8 @@ const EditPopup = props => {
 
         }
 
+        console.log('AFTER CHECK', newDrinkName, newStrength, newDescription, newImgUrl);
+
         const payload = {
             ...drink,
             name: newDrinkName,
@@ -44,6 +41,8 @@ const EditPopup = props => {
             description: newDescription,
             imgUrl: newImgUrl
         }
+
+        console.log('PAYLOAD', payload);
 
         let updatedDrink = await dispatch(editDrink(payload));
         if (updatedDrink) {

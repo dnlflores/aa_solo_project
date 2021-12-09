@@ -46,8 +46,13 @@ export const editDrink = drink => async dispatch => {
         body: JSON.stringify(drink)
     });
 
+    // console.log('RESPONSE', response, 'DRINK FROM THUNK', drink);
+    
     if (response.ok) {
         const newDrink = await response.json();
+
+        console.log('NEW DRINK', newDrink);
+
         dispatch(setDrink(newDrink));
         return newDrink;
     }
@@ -83,9 +88,10 @@ const drinksReducer = (state = initialState, action) => {
             return newState;
         case SET_DRINK:
             const updateState = {...state};
-            // console.log('ACTION', action, 'UPDATE STATE', updateState);
+            console.log('UPDATE STATE', updateState);
+            console.log('DRINK', action.drink.drinkToUpdate, 'DRINK ID', action.drink.drinkToUpdate.id);
             updateState[action.drink.drinkToUpdate.id] = action.drink.drinkToUpdate;
-            // console.log('AFTER STATE', updateState);
+            console.log('AFTER STATE', updateState);
             return updateState;
         case ADD_DRINK:
             const addState = {drinks: {}};

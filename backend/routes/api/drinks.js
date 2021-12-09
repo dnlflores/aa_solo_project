@@ -12,13 +12,14 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.patch('/:id', asyncHandler(async (req, res) => {
-    const { id, name, description, strength } = req.body;
+    const { id, name, description, strength, imgUrl } = req.body;
 
     const updatedDrink = {
         id, 
         name,
         description,
-        strength
+        strength,
+        imgUrl
     };
 
     const drinkToUpdate = await Drink.findOne({
