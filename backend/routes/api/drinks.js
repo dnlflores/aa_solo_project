@@ -26,6 +26,10 @@ router.patch('/:id', asyncHandler(async (req, res) => {
         }
     });
 
+    router.post('/', asyncHandler(async (req, res) => {
+        
+    }));
+
     await drinkToUpdate.update(updatedDrink);
     res.json({ drinkToUpdate });
 }));

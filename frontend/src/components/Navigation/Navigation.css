@@ -76,6 +76,7 @@ ul.profile-dropdown {
     left: inherit;
     z-index: 200;
     right: 5px;
+    top: 5px;
 }
 
 #side::before, #side::after {
