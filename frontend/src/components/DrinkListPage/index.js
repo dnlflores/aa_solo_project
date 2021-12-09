@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDrinks, editDrink } from '../../store/drink';
 import './DrinkList.css';
 import EditPopup from '../EditPopup';
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 const DrinkListPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const { drinks } = useSelector(state => state.drinks);
     const sessionUser = useSelector(state => state.session.user);
     const [buttonPopup, setButtonPopup] = useState(false);

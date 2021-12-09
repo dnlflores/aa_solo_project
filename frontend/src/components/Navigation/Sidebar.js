@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useHistory } from 'react-router-dom'
-import CreateDrinkPage from '../CreateDrinkPage';
 
 const Sidebar = ({ user }) => {
     const dispatch = useDispatch();
