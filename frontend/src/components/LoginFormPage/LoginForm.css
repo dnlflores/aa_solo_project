@@ -5,6 +5,7 @@
     height: 80vh;
     flex-direction: column;
     position: relative;
+    top: 70px;
 }
 
 .login-input-container label{
@@ -34,4 +35,8 @@
 	top:-60px;
 	font-size:12px;
 	
+}
+
+.demo-button {
+    margin: 20px;
 }

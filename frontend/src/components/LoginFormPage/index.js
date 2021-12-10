@@ -22,7 +22,17 @@ const LoginFormPage = () => {
             .catch(async res => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-            })
+            });
+    }
+
+    const handleDemo = event => {
+        event.preventDefault();
+        setErrors([]);
+        return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
+            .catch(async res => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
     }
 
     return (
@@ -55,6 +65,7 @@ const LoginFormPage = () => {
                 </div>
             </div>
             <button type="submit" className="login-button btn button-1">Log In</button>
+            <button className="demo-button btn button-1" onClick={handleDemo}>Demo</button>
         </form>
     )
 }
