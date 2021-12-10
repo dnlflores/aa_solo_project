@@ -29,7 +29,6 @@ const CreateDrinkPage = () => {
 
         const drinkErrors = checkErrors();
 
-
         const payload = {
             name: drinkName,
             strength,
@@ -42,13 +41,12 @@ const CreateDrinkPage = () => {
 
         if (drinkErrors.length === 0) {
             await dispatch(addNewDrink(payload));
-
             history.push('/drinks');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="create-form">
             <div className="create-error-list">
                 <ul>
                     {errors.map((error, index) => <li key={index}>{error}</li>)}
@@ -101,8 +99,8 @@ const CreateDrinkPage = () => {
                         id="strength-input"
                     />
                 </label>
-                <button type="submit" className="login-button btn button-1">Create Beer!</button>
             </div>
+            <button type="submit" className="create-drink-button btn button-2">Create Beer!</button>
         </form>
     )
 }
