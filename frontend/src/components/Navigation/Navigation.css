@@ -6,10 +6,7 @@
     z-index: 50;
     background: rgb(11, 150, 243);
     height: 100px;
-    border-radius: 10px;
     position: relative;
-    width: 120%;
-    right: 12%;
 }
 
 .navigation-li>a {
@@ -94,7 +91,6 @@ ul.profile-dropdown {
     height: 30px;
     justify-content: space-between;
     position: relative;
-    left: 50px;
 }
 
 .top-bar, .middle-bar, .bottom-bar {
@@ -103,8 +99,6 @@ ul.profile-dropdown {
 }
 
 .strong-tab {
-    position: relative;
-    left: 40px;
 }
 
 .login-tab, .logout-tab, .strong-tab, .home-tab {

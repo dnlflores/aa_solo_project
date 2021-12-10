@@ -1303,3 +1303,9 @@ https://oreillymedia.github.io/Using_SVG/extras/ch07-textpaths.html */
 .button-3:hover::before {
 	transform: translate(5px, 5px);
 }
+
+.container {
+	position: sticky;
+	top: 0;
+	z-index: 200;
+}
