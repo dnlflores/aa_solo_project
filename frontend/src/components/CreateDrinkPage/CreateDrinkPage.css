@@ -1,10 +1,11 @@
-.create-div {
+/* .create-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: -50px;
-}
+	margin-bottom: 55px;
+    width: 600px
+} */
 
 .create-form {
     display: flex;
@@ -18,4 +19,33 @@
 .create-drink-button {
     height: 60px;
     width: max-content;
+}
+
+.create-input-container label{
+	position: relative;
+    top: -30px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.create-input-container input{ 
+  border:0;
+  border-bottom:1px solid purple;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.create-input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid white;	
+}
+
+.create-input-container input:focus ~ label,
+.create-input-container input:valid ~ label{
+	top:-60px;
+	font-size:12px;
+	
 }

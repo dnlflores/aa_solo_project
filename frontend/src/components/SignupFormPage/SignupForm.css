@@ -1,50 +1,37 @@
-.signup-div {
+.signup-form {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 100vh;
     justify-content: center;
-}
-
-.signup-username-label {
-    position: relative;
-    right: 2px;
-}
-
-.signup-email-label {
-    position: relative;
-    left: 10px;
-}
-
-.signup-confirm-password-label {
-    position: relative;
-    right: 27px;
-}
-
-.signup-password-label {
+    height: 80vh;
+    flex-direction: column;
     position: relative;
 }
 
-#signup-password-input {
-    position: relative;
-    left: 27px;
+.signup-input-container label{
+	position: relative;
+    top: -30px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.signup-input-container input{ 
+  border:0;
+  border-bottom:1px solid #0cbaba;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.signup-input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid white;	
 }
 
-#signup-username-input {
-    position: relative;
-    left: 23px
-}
-
-#signup-email-input {
-    position: relative;
-    left: 37px;
-}
-
-#signup-confirm-password-input {
-    position: relative;
-}
-
-#signup-button {
-    position: relative;
-    top: 20px;
+.signup-input-container input:focus ~ label,
+.signup-input-container input:valid ~ label{
+	top:-60px;
+	font-size:12px;
+	
 }

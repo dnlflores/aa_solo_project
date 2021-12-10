@@ -53,8 +53,7 @@ const CreateDrinkPage = () => {
                 </ul>
             </div>
             <div className="create-div">
-                <label className="create-drink-name-label">
-                    Beer Name:
+                <div className="create-name-div create-input-container">
                     <input
                         type='text'
                         value={drinkName}
@@ -62,9 +61,9 @@ const CreateDrinkPage = () => {
                         required
                         id="create-drink-name-input"
                     />
-                </label>
-                <label className="img-url-label">
-                    Image URL:
+                    <label className="create-drink-name-label">Beer Name</label>
+                </div>
+                <div className="create-img-url-div create-input-container">
                     <input
                         type="text"
                         value={imgUrl}
@@ -72,9 +71,9 @@ const CreateDrinkPage = () => {
                         required
                         id="img-url-input"
                     />
-                </label>
-                <label className="description-label">
-                    Description:
+                    <label className="img-url-label">Image URL</label>
+                </div>
+                <div className="create-description-div create-input-container">
                     <input
                         type="text"
                         value={description}
@@ -82,9 +81,9 @@ const CreateDrinkPage = () => {
                         required
                         id="description-input"
                     />
-                </label>
-                <label className="strength-label">
-                    Strength (ABV %):
+                    <label className="description-label"> Description</label>
+                </div>
+                <div className="create-strength-div create-input-container">
                     <input
                         type="text"
                         value={strength}
@@ -98,7 +97,8 @@ const CreateDrinkPage = () => {
                         required
                         id="strength-input"
                     />
-                </label>
+                    <label className="strength-label"> Strength (ABV %)</label>
+                </div>
             </div>
             <button type="submit" className="create-drink-button btn button-2">Create Beer!</button>
         </form>
