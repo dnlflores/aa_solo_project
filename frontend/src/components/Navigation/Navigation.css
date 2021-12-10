@@ -20,19 +20,6 @@ a.active {
     font-weight: bold;
 }
 
-button.profile-button {
-    background-color: #9999ff;
-    display: flex;
-    color: white;
-    border: none;
-    padding: 10px;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-    position: relative;
-    left: 50px;
-}
-
 ul.profile-dropdown {
     list-style-type: none;
     position: relative;
@@ -98,9 +85,6 @@ ul.profile-dropdown {
     width: 30px;
 }
 
-.strong-tab {
-}
-
 .login-tab, .logout-tab, .strong-tab, .home-tab {
     font-size: 20px;
 }
@@ -110,6 +94,11 @@ ul.profile-dropdown {
 }
 
 .create-button {
-    position: relative;
-    top: 100px;
+    position: absolute;
+    top: 200px;
+}
+
+.profile-button {
+    position: absolute;
+    top: 300px;
 }

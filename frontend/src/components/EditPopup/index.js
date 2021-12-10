@@ -16,6 +16,7 @@ const EditPopup = props => {
 
     const handleEditSubmit = async event => {
         event.preventDefault();
+        setErrors([]);
 
         let newDrinkName = drink.name;
         let newStrength = drink.strength;
@@ -30,36 +31,50 @@ const EditPopup = props => {
 
         }
 
-        const payload = {
-            ...drink,
-            name: newDrinkName,
-            strength: newStrength,
-            description: newDescription,
-            imgUrl: newImgUrl
-        }
+        const arr = [];
+        if (newDrinkName === '') arr.push('Please put a name for the drink');
+        if (newDrinkName.length > 50) arr.push('Drink name must be less than 50 characters');
+        if (newDrinkName.length < 4 ) arr.push('Drink must be greater than 4 characters');
+        if (newDescription.length < 10 ) arr.push('Description must be at least 10 characters')
+        if (newDescription === '') arr.push('Please give a description');
 
-        let updatedDrink = await dispatch(editDrink(payload));
-        if (updatedDrink) {
-            props.setTrigger(false);
-            setDrinkName('');
-            setStrength('');
-            setDescription('');
-            setImgUrl('')
-        }
+
+        if (arr.length === 0) {
+            const payload = {
+                ...drink,
+                name: newDrinkName,
+                strength: newStrength,
+                description: newDescription,
+                imgUrl: newImgUrl
+            }
+
+            let updatedDrink = await dispatch(editDrink(payload));
+            if (updatedDrink) {
+                props.setTrigger(false);
+                const { drinkToUpdate } = updatedDrink;
+                setDrink(drinkToUpdate);
+                setDrinkName('');
+                setStrength('');
+                setDescription('');
+                setImgUrl('');
+            }
+        } else  setErrors(arr);
     };
-
 
     return (props.trigger) ? (
         <div className="edit-popup">
             <div className="popup-inner">
                 <div className="outer">
                     <div className="inner">
-                        <label id="close-label"><button className="close-button btn" onClick={() => props.setTrigger(false)}>Close</button></label>
+                        <label id="close-label"><button className="close-button btn" onClick={event => {
+                            props.setTrigger(false);
+                            setErrors([]);
+                        }}>Close</button></label>
                     </div>
                 </div>
                 <h3 className="edit-popup-title">{drink.name}</h3>
                 <form className="edit-popup-form" onSubmit={handleEditSubmit}>
-                    <div className="signup-error-list">
+                    <div className="edit-popup-error-list">
                         <ul className="errors-ul">
                             {errors.map((error, index) => <li key={index}>{error}</li>)}
                         </ul>

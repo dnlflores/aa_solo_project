@@ -18,6 +18,8 @@ const CreateDrinkPage = () => {
         const arr = [];
         if (drinkName === '') arr.push('Please put a name for the drink');
         if (drinkName.length > 50) arr.push('Drink name must be less than 50 characters');
+        if (drinkName.length < 4) arr.push('Drink must be greater than 4 characters');
+        if (description.length < 10) arr.push('Description must be at least 10 characters')
         if (Number(strength) < 0) arr.push('Strength must be a positve number.');
         if (description === '') arr.push('Please give a description');
         return arr;

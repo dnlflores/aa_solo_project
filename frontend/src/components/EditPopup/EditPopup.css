@@ -135,3 +135,9 @@
 	font-size:12px;
 	
 }
+
+.edit-popup-error-list {
+    position: absolute;
+    right: 200px;
+    width: 250px
+}

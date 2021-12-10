@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'drinks/LOAD';
-const LOAD_DRINK = 'drinks/LOAD_DRINK';
 const ADD_DRINK = 'drinks/ADD_DRINK';
 const SET_DRINK = 'drinks/SET_DRINK';
 const DELETE_DRINK = 'drinks/DELETE_DRINK'
@@ -16,11 +15,6 @@ const setDrink = drink => ({
     drink
 })
 
-const loadDrink = drink => ({
-    type: LOAD_DRINK,
-    drink
-});
-
 const deleteDrink = drink => ({
     type: DELETE_DRINK,
     drink
@@ -33,7 +27,6 @@ const addDrink = drink => ({
 
 export const getDrinks = () => async dispatch => {
     const response = await csrfFetch('/api/drinks');
-    // console.log('RESPONSE FROM GET DRINKS', response);
 
     if (response.ok) {
         const drinks = await response.json();
@@ -51,8 +44,6 @@ export const editDrink = drink => async dispatch => {
         },
         body: JSON.stringify(drink)
     });
-
-    // console.log('RESPONSE', response, 'DRINK FROM THUNK', drink);
     
     if (response.ok) {
         const newDrink = await response.json();

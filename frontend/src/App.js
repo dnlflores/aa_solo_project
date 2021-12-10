@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import DrinkListPage from './components/DrinkListPage';
 import HomePage from './components/HomePage';
 import CreateDrinkPage from './components/CreateDrinkPage';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route path="/users">
+          <ProfilePage />
         </Route>
       </Switch>
       )}
