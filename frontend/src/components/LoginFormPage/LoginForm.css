@@ -1,23 +1,37 @@
-.login-div {
+.login-form {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 100vh;
     justify-content: center;
+    height: 80vh;
+    flex-direction: column;
     position: relative;
-    bottom: 10vh;
 }
 
-.login-username-label, .login-username-input {
-    position: relative;
-    right: 22px;
+.login-input-container label{
+	position: relative;
+    top: -30px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.login-input-container input{ 
+  border:0;
+  border-bottom:1px solid #0cbaba;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.login-input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid white;	
 }
 
-.login-error-list {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    top: 35vh;
-    right: 10vh
+.login-input-container input:focus ~ label,
+.login-input-container input:valid ~ label{
+	top:-60px;
+	font-size:12px;
+	
 }

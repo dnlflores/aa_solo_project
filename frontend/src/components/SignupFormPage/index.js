@@ -31,15 +31,14 @@ const SignupFormPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup-form">
             <div className="signup-error-list">
                 <ul>
                     {errors.map((error, index) => <li key={index}>{error}</li>)}
                 </ul>
             </div>
             <div className="signup-div">
-                <div className="signup-username-div">
-                    <label className="signup-username-label">Username: </label>
+                <div className="signup-username-div signup-input-container">
                     <input
                         type='text'
                         value={username}
@@ -47,9 +46,9 @@ const SignupFormPage = () => {
                         required
                         id="signup-username-input"
                     />
+                    <label className="signup-username-label">Username</label>
                 </div>
-                <div className="signup-email-div">
-                    <label className="signup-email-label">Email: </label>
+                <div className="signup-email-div signup-input-container">
                     <input
                         type='text'
                         value={email}
@@ -57,9 +56,9 @@ const SignupFormPage = () => {
                         required
                         id="signup-email-input"
                     />
+                    <label className="signup-email-label">Email</label>
                 </div>
-                <div className="signup-password-div">
-                    <label className="signup-password-label">Password: </label>
+                <div className="signup-password-div signup-input-container">
                     <input
                         type="password"
                         value={password}
@@ -67,9 +66,9 @@ const SignupFormPage = () => {
                         required
                         id="signup-password-input"
                     />
+                    <label className="signup-password-label">Password</label>
                 </div>
-                <div className="signup-confirm-password-div">
-                    <label className="signup-confirm-password-label">Confirm Password: </label> 
+                <div className="signup-confirm-password-div signup-input-container">
                     <input
                         type="password"
                         value={confirmPassword}
@@ -77,9 +76,10 @@ const SignupFormPage = () => {
                         required
                         id="signup-confirm-password-input"
                     />
+                    <label className="signup-confirm-password-label">Confirm Password</label> 
                 </div>
-                <button type="submit" id="signup-button">Sign Up</button>
             </div>
+            <button type="submit" id="signup-button" className="btn button-1">Sign Up</button>
         </form>
     )
 };
