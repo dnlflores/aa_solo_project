@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     Drink.belongsTo(models.User, {
       foreignKey: 'userId'
     });
-
-    Drink.hasMany(models.Checkin, {
-      foreignKey: 'drinkId'
-    });
   };
   return Drink;
 };
