@@ -1281,11 +1281,11 @@ https://oreillymedia.github.io/Using_SVG/extras/ch07-textpaths.html */
 }
 
 .button-3 {
-	color: black;
+	color: #380036;
 }
 
 .button-3::after, .button-3::before {
-	border: 3px solid black;
+	border: 3px solid #380036;
 	content: "";
 	position: absolute;
 	width: calc(100% - 6px);
