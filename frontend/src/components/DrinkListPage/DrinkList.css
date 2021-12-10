@@ -9,23 +9,6 @@ img.beer-img {
     top: 70px;
 }
 
-img#beer-3 {
-    width: 450px;
-    height: 350px;
-    position: relative;
-    right: 100px;
-}
-
-img#beer-4 {
-    width: 250px;
-}
-
-img#beer-5 {
-    width: 450px;
-    position: relative;
-    right: 100px;
-}
-
 li.beer-li {
     display: flex;
     margin: 40px;
@@ -45,21 +28,6 @@ p.drink-description {
     font-size: 30px;
     width: 700px;
     font-family: 'Open Sans Condensed', sans-serif;
-}
-
-div#beer-4-div {
-    position: relative;
-    left: 200px;
-}
-
-img#beer-4 {
-    position: relative;
-    top: 20px;
-}
-
-div#beer-1-div, div#beer-2-div {
-    position: relative;
-    left: 150px;
 }
 
 div.strength-edit-container {
@@ -83,4 +51,9 @@ div.beer-info-div {
 .signup-error-list {
     position: relative;
     bottom: 30px;
+}
+
+.beer-li {
+    display: flex;
+    justify-content: space-between;
 }
