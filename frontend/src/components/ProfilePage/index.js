@@ -1,29 +1,31 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDrinks } from "../../store/user";
+import Drink from "../Drink";
+import './ProfilePage.css';
 
 const ProfilePage = props => {
     const user = useSelector(state => state.session.user);
-    const drinks = useSelector(state => state.userDrinks);
+    const userDrinks = useSelector(state => state.userDrinks.drinks);
     const dispatch = useDispatch();
-    const drinksArray = Object.values(drinks);
-
-    console.log("USER DRINKS ARRAY", drinksArray);
 
     useEffect(() => {
         dispatch(getUserDrinks(user));
     }, [dispatch, user]);
 
     return (
-        <>
-            <h2>{user.username}</h2>
-            <h3>{user.email}</h3>
+        <div className="profile-page-div">
+            <div className="user-info-div">
+                <h2 className="user-title">{user.username}</h2>
+                <h3 className="user-email">{user.email}</h3>
+            </div>
+            <h2 className="drinks-list-title">My Drinks</h2>
             <ul>
-                {drinksArray.map(drink => (
-                  <li key={drink.id}>NAME{drink.name}</li>  
+                {userDrinks && userDrinks.map(drink => (
+                    <li key={drink.id} className="drink-container"><Drink drink={drink} /></li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 };
 

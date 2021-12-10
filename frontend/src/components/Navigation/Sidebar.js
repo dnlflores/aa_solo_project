@@ -39,7 +39,6 @@ const Sidebar = ({ user }) => {
             {showMenu && (
                 <div className="sidebar-list">
                     <h2 className="username">{user.username}</h2>
-                    <p className="email">{user.email}</p>
                     <button onClick={goToCreate} className="button-1 btn create-button"><label id="create-label">Create Beer!</label></button>
                     <button onClick={goToProfile} className="button-1 btn profile-button"><label id="profile-label">Go to Profile</label></button>
                     <button onClick={logout} className="button-1 btn logout-button"><label id="logout-label">Log out</label></button>

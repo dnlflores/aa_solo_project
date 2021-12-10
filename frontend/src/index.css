@@ -19,6 +19,18 @@ a {
 	margin: 0;
 }
 
+h2 {
+    font-family: 'Anton', sans-serif;
+}
+
+h3 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+P {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
 button, input[type="submit"], input[type="reset"] {
 	background: none;
 	color: inherit;
