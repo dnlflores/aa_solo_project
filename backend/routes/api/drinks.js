@@ -32,6 +32,19 @@ router.patch('/:id', asyncHandler(async (req, res) => {
     res.json({ drinkToUpdate });
 }));
 
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    const drinkToDelete = await Drink.findOne({
+        where: {
+            id
+        }
+    });
+
+    await drinkToDelete.destroy();
+    res.json({ drinkToDelete });
+}));
+
 router.post('/', asyncHandler(async (req, res) => {
     const { name, imgUrl, description, strength, userId } = req.body;
 

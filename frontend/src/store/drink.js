@@ -4,6 +4,7 @@ const LOAD = 'drinks/LOAD';
 const LOAD_DRINK = 'drinks/LOAD_DRINK';
 const ADD_DRINK = 'drinks/ADD_DRINK';
 const SET_DRINK = 'drinks/SET_DRINK';
+const DELETE_DRINK = 'drinks/DELETE_DRINK'
 
 const load = list => ({
     type: LOAD,
@@ -19,6 +20,11 @@ const loadDrink = drink => ({
     type: LOAD_DRINK,
     drink
 });
+
+const deleteDrink = drink => ({
+    type: DELETE_DRINK,
+    drink
+})
 
 const addDrink = drink => ({
     type: ADD_DRINK,
@@ -51,8 +57,6 @@ export const editDrink = drink => async dispatch => {
     if (response.ok) {
         const newDrink = await response.json();
 
-        console.log('NEW DRINK', newDrink);
-
         dispatch(setDrink(newDrink));
         return newDrink;
     }
@@ -74,6 +78,22 @@ export const addNewDrink = drink => async dispatch => {
     }
 };
 
+export const deleteOneDrink = drink => async dispatch => {
+    const response = await csrfFetch(`/api/drinks/${drink.id}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(drink)
+    });
+
+    if (response.ok) {
+        const drinkToDelete = await response.json();
+        dispatch(deleteDrink(drinkToDelete));
+        return drinkToDelete;
+    }
+};
+
 const initialState = {
     drinks: [],
 }
@@ -88,15 +108,16 @@ const drinksReducer = (state = initialState, action) => {
             return newState;
         case SET_DRINK:
             const updateState = {...state};
-            console.log('UPDATE STATE', updateState);
-            console.log('DRINK', action.drink.drinkToUpdate, 'DRINK ID', action.drink.drinkToUpdate.id);
             updateState[action.drink.drinkToUpdate.id] = action.drink.drinkToUpdate;
-            console.log('AFTER STATE', updateState);
             return updateState;
         case ADD_DRINK:
             const addState = {drinks: {}};
             addState.drinks = {...state}
             return addState;
+        case DELETE_DRINK:
+            const deleteState = {...state};
+            delete deleteState[action.drink.drinkToDelete.id];
+            return deleteState;
         default:
             return state;
     }

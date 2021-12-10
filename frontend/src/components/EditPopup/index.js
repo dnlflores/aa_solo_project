@@ -22,8 +22,6 @@ const EditPopup = props => {
         let newDescription = drink.description;
         let newImgUrl = drink.imgUrl;
 
-        console.log('NEW INIT', newDrinkName, newStrength, newDescription, newImgUrl);
-
         if (drink) {
             if (drinkName !== '') newDrinkName = drinkName;
             if (strength !== '') newStrength = strength;
@@ -31,8 +29,6 @@ const EditPopup = props => {
             if (imgUrl !== '') newImgUrl = imgUrl;
 
         }
-
-        console.log('AFTER CHECK', newDrinkName, newStrength, newDescription, newImgUrl);
 
         const payload = {
             ...drink,
@@ -42,11 +38,8 @@ const EditPopup = props => {
             imgUrl: newImgUrl
         }
 
-        console.log('PAYLOAD', payload);
-
         let updatedDrink = await dispatch(editDrink(payload));
         if (updatedDrink) {
-            console.log("UPDATED DRINK", updatedDrink);
             props.setTrigger(false);
             setDrinkName('');
             setStrength('');
