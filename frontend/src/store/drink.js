@@ -127,10 +127,16 @@ const drinksReducer = (state = initialState, action) => {
         case DELETE_DRINK:
             const deleteState = {...state};
             delete deleteState[action.drink.drinkToDelete.id];
-            console.log("DELETE DRINK STATE", deleteState);
             return deleteState;
         case LOAD_USER_DRINKS:
-            const newDrinksState = {...action.drinks.drinks};
+            console.log("STATE", state.drinks);
+            const newDrinksState = {};
+            action.drinks.drinks.forEach(drink => {
+                console.log("DRINK FROM ACTION", drink)
+                newDrinksState[drink.id] = drink;
+            });
+            console.log("NEW DRINKS STATE", newDrinksState);
+            // newDrinksState[]
             return newDrinksState;
         default:
             return state;

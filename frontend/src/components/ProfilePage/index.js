@@ -12,6 +12,8 @@ const ProfilePage = props => {
     });
     const userDrinks = Object.values(drinks);
 
+    console.log("USER DRINKS", userDrinks)
+
     const dispatch = useDispatch();
 
     useEffect(() => {
