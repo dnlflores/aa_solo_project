@@ -4,6 +4,12 @@ const LOAD = 'drinks/LOAD';
 const ADD_DRINK = 'drinks/ADD_DRINK';
 const SET_DRINK = 'drinks/SET_DRINK';
 const DELETE_DRINK = 'drinks/DELETE_DRINK'
+const LOAD_USER_DRINKS = 'users/LOAD_USER_DRINKS';
+
+const loadUserDrinks = drinks => ({
+    type: LOAD_USER_DRINKS,
+    drinks
+});
 
 const load = list => ({
     type: LOAD,
@@ -24,6 +30,17 @@ const addDrink = drink => ({
     type: ADD_DRINK,
     drink
 });
+
+export const getUserDrinks = user => async dispatch => {
+    const response = await csrfFetch(`/api/users/${user.id}`);
+
+    if (response.ok) {
+        const drinks = await response.json();
+
+        dispatch(loadUserDrinks(drinks));
+        return drinks;
+    }
+};
 
 export const getDrinks = () => async dispatch => {
     const response = await csrfFetch('/api/drinks');
@@ -78,6 +95,8 @@ export const deleteOneDrink = drink => async dispatch => {
         body: JSON.stringify(drink)
     });
 
+    console.log("DRINK FROM REDUCER", drink)
+
     if (response.ok) {
         const drinkToDelete = await response.json();
         dispatch(deleteDrink(drinkToDelete));
@@ -108,7 +127,11 @@ const drinksReducer = (state = initialState, action) => {
         case DELETE_DRINK:
             const deleteState = {...state};
             delete deleteState[action.drink.drinkToDelete.id];
+            console.log("DELETE DRINK STATE", deleteState);
             return deleteState;
+        case LOAD_USER_DRINKS:
+            const newDrinksState = {...action.drinks.drinks};
+            return newDrinksState;
         default:
             return state;
     }

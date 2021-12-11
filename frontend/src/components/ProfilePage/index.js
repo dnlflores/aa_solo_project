@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDrinks } from "../../store/user";
+import { getUserDrinks } from "../../store/drink";
 import Drink from "../Drink";
 import './ProfilePage.css';
 
 const ProfilePage = props => {
     const user = useSelector(state => state.session.user);
-    const userDrinks = useSelector(state => state.userDrinks.drinks);
+    const drinks = useSelector(state => { 
+        console.log("STATE INSIDE PROFILE", state);
+        return state.drinks
+    });
+    const userDrinks = Object.values(drinks);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +26,7 @@ const ProfilePage = props => {
             </div>
             <h2 className="drinks-list-title">My Drinks</h2>
             <ul>
-                {userDrinks && userDrinks.map(drink => (
+                {userDrinks.map(drink => (
                     <li key={drink.id} className="drink-container"><Drink drink={drink} /></li>
                 ))}
             </ul>
