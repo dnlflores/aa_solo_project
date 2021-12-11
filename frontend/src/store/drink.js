@@ -95,8 +95,6 @@ export const deleteOneDrink = drink => async dispatch => {
         body: JSON.stringify(drink)
     });
 
-    console.log("DRINK FROM REDUCER", drink)
-
     if (response.ok) {
         const drinkToDelete = await response.json();
         dispatch(deleteDrink(drinkToDelete));
@@ -129,13 +127,8 @@ const drinksReducer = (state = initialState, action) => {
             delete deleteState[action.drink.drinkToDelete.id];
             return deleteState;
         case LOAD_USER_DRINKS:
-            console.log("STATE", state.drinks);
             const newDrinksState = {};
-            action.drinks.drinks.forEach(drink => {
-                console.log("DRINK FROM ACTION", drink)
-                newDrinksState[drink.id] = drink;
-            });
-            console.log("NEW DRINKS STATE", newDrinksState);
+            action.drinks.drinks.forEach(drink => newDrinksState[drink.id] = drink);
             // newDrinksState[]
             return newDrinksState;
         default:

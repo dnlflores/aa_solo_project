@@ -41,8 +41,6 @@ router.post('/', validateSignup, asyncHandler(async (req, res, next) => {
 router.get('/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
 
-    console.log('ID FROM REQUEST', id);
-
     const drinks = await Drink.findAll({
         where: {
             userId: id

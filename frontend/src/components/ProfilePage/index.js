@@ -6,13 +6,8 @@ import './ProfilePage.css';
 
 const ProfilePage = props => {
     const user = useSelector(state => state.session.user);
-    const drinks = useSelector(state => { 
-        console.log("STATE INSIDE PROFILE", state);
-        return state.drinks
-    });
+    const drinks = useSelector(state => state.drinks);
     const userDrinks = Object.values(drinks);
-
-    console.log("USER DRINKS", userDrinks)
 
     const dispatch = useDispatch();
 
@@ -29,7 +24,7 @@ const ProfilePage = props => {
             <h2 className="drinks-list-title">My Drinks</h2>
             <ul>
                 {userDrinks.map(drink => (
-                    <li key={drink.id} className="drink-container"><Drink drink={drink} /></li>
+                    <li key={drink} className="drink-container"><Drink drink={drink} /></li>
                 ))}
             </ul>
         </div>
